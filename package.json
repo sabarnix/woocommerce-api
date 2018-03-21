@@ -3,7 +3,11 @@
   "description": "A Javascipt wrapper for the WooCommerce REST API",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --mode production"
+    "build": "WEBPACK_ENV=build webpack",
+    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
+    "lint": "eslint --fix ./src",
+    "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
+    "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js"
   },
   "author": "sabarnix@gmail.com",
   "keywords": [
@@ -11,7 +15,7 @@
     "rest-api"
   ],
   "license": "MIT",
-  "main": "dist/main.js",
+  "main": "lib/woocommerce-api.js",
   "dependencies": {
     "bluebird": "^3.4.6",
     "browser-request": "^0.3.3",
@@ -20,10 +24,18 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.12"
+    "chai": "^4.1.2",
+    "eslint": "^4.13.1",
+    "eslint-loader": "^1.9.0",
+    "mocha": "^4.0.1",
+    "webpack": "^3.10.0",
+    "yargs": "^10.0.3"
   }
 }
